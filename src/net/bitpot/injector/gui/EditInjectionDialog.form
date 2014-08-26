@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="net.bitpot.injector.gui.EditInjectionDialog">
+  <grid id="27dc6" binding="rootPane" layout-manager="FormLayout">
+    <rowspec value="center:p:noGrow"/>
+    <rowspec value="top:5dlu:noGrow"/>
+    <rowspec value="center:p:noGrow"/>
+    <colspec value="fill:58px:noGrow"/>
+    <colspec value="left:4dlu:noGrow"/>
+    <colspec value="fill:140dlu:noGrow"/>
+    <constraints>
+      <xy x="20" y="20" width="313" height="86"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="a0586" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <labelFor value="a8acd"/>
+          <text value="&amp;Shortcut"/>
+        </properties>
+      </component>
+      <component id="26370" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <horizontalTextPosition value="11"/>
+          <labelFor value="95d28"/>
+          <text value="&amp;Template"/>
+        </properties>
+      </component>
+      <component id="a8acd" class="javax.swing.JTextField" binding="shortcutEd">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <nextFocusableComponent value=""/>
+        </properties>
+      </component>
+      <component id="95d28" class="javax.swing.JTextField" binding="templateEd">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>
