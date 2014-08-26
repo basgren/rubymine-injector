@@ -147,8 +147,6 @@ public class SettingsDialog extends DialogWrapper
             tableModel.fireTableDataChanged();
             modified = true;
         }
-
-        //Messages.showInfoMessage("Cancel button behavior is not implemented yet. Changes are saved.", "Information");
     }
 
 
@@ -351,11 +349,6 @@ public class SettingsDialog extends DialogWrapper
      */
     public static void main(String[] args)
     {
-        //Logger.setFactory(LoggerFactory.getInstance());
-
-        @SuppressWarnings("unused")
-        Logger log = Logger.getInstance(SettingsDialog.class.getName());
-
         final ApplicationInjector injector = new ApplicationInjector();
 
         SwingUtilities.invokeLater(new Runnable() {

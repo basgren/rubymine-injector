@@ -10,7 +10,6 @@ import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.util.xmlb.XmlSerializer;
 import net.bitpot.injector.config.ApplicationConfig;
 import net.bitpot.injector.gui.SettingsDialog;
-import net.bitpot.injector.handlers.EditorHook;
 import net.bitpot.injector.handlers.TypedKeyHook;
 import net.bitpot.injector.handlers.impl.RHTMLTypingHandler;
 import net.bitpot.injector.handlers.impl.RubyStringTypingHandler;
@@ -19,8 +18,6 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -45,21 +42,13 @@ public class ApplicationInjector implements ApplicationComponent, Configurable,
 
     private ApplicationConfig appConfig;
 
-
-    //private Map<String, EditorActionHandler> handlersMap = new HashMap<String, EditorActionHandler>();
-    private List<EditorHook> hooks = new ArrayList<EditorHook>();
-
     private SettingsDialog settingsDlg;
-
-
-
 
 
     public ApplicationInjector()
     {
         appConfig = new ApplicationConfig();
     }
-
 
 
     public static ApplicationInjector getInstance()
@@ -104,31 +93,8 @@ public class ApplicationInjector implements ApplicationComponent, Configurable,
     }
 
 
-    private void setHandler(EditorHook handler)
-    {
-        hooks.add(handler);
-        handler.setHandler();
-    }
-
-
-    private void restoreAllHandlers()
-    {
-        for(int i = hooks.size() - 1; i >= 0; i--)
-            hooks.get(i).restoreHandler();
-
-        hooks.clear();
-    }
-
-
-  /*  public static void executeOriginalTypedAction(@NotNull final Editor editor, final char c, @NotNull DataContext dataContext)
-    {
-        typedKeyHandler.executeOriginal(editor, c, dataContext);
-    }  */
-
-
     public static TypedKeyHook getTypedKeyHandler()
     {
-        //return typedKeyHandler;
         return TypedKeyHook.getInstance();
     }
 
@@ -136,28 +102,8 @@ public class ApplicationInjector implements ApplicationComponent, Configurable,
     public void disposeComponent()
     {
         TypedKeyHook.unbindHook();
-        //if (typedKeyHandler != null)
-        //    typedKeyHandler.unregisterHandler();
-
-        restoreAllHandlers();
     }
 
-
-    /**
-     * Method is called when backspace called just after
-     * @param editor af
-     */
-    /*public void onRestoreShortcutChar(Editor editor)
-    {
-        //typedKeyHandler.restoreShortcutChar(editor);
-    }  */
-
-   /*
-    public SettingsDialog getSettingsDialog()
-    {
-        createComponent();
-        return settingsDlg;
-    }   */
 
     /* ==============================================================
      *             Configurable interface implementation

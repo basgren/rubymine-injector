@@ -10,8 +10,6 @@ package net.bitpot.injector.handlers.checkers;
 public class CustomChecker
 {
 
-
-
     public static int posForward(CharSequence seq, String findStr, int startPos)
     {
         int seekLen = findStr.length();

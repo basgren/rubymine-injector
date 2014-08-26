@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Provides more convenient acces to XML-stored params.
+ * Provides more convenient access to XML-stored params.
  */
 public class XmlParams
 {

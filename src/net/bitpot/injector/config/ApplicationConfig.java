@@ -9,8 +9,7 @@ import java.util.List;
 /**
  * Application wide settings.
  */
-public class ApplicationConfig extends Modifiable implements
-                                Assignable<ApplicationConfig>
+public class ApplicationConfig implements Assignable<ApplicationConfig>
                                 //Cloneable
 {
     private final static int XML_DATA_FORMAT_VERSION = 1;
@@ -36,8 +35,6 @@ public class ApplicationConfig extends Modifiable implements
         // This constructor can be called by IDE for its own reasons after calling getState() of owning
         // ApplicationInjector, so no bulk initializations should be done here.
         initDefaults();
-
-        resetModified();
     }
 
     public boolean isStatsVisible()
@@ -99,11 +96,7 @@ public class ApplicationConfig extends Modifiable implements
         {
         case 1: loadFromXml_v1(elem); break;
         }
-
-        resetModified();
     }
-
-
 
 
     /**
@@ -184,22 +177,7 @@ public class ApplicationConfig extends Modifiable implements
         XmlParams xmlParams = new XmlParams(root);
         xmlParams.setParam("show-stats", statsVisible);
 
-        resetModified();
-
         return root;
-    }
-
-
-
-
-    public void setStringInjectionEnabled(boolean value)
-    {
-        stringInjectionEnabled = value;
-    }
-
-    public boolean isStringInjectionEnabled()
-    {
-        return stringInjectionEnabled;
     }
 
 

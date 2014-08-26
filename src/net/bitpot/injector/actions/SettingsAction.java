@@ -12,7 +12,7 @@ import net.bitpot.injector.gui.SettingsDialog;
 /**
  * Action that shows injector settings.
  */
-public class SettingsAction extends AnAction
+class SettingsAction extends AnAction
 {
     public void actionPerformed(AnActionEvent e)
     {
@@ -42,7 +42,7 @@ public class SettingsAction extends AnAction
 
 
     /**
-     * Open IDE settings on page withInjector settings
+     * Open IDE settings on page with Injector settings
      * @param e Action event
      */
     private void openGlobalSettings(AnActionEvent e)

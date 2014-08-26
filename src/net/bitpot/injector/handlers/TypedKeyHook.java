@@ -88,7 +88,7 @@ public class TypedKeyHook implements TypedActionHandler
                 new FileEditorManagerAdapter()
                 {
                     @Override
-                    public void selectionChanged(FileEditorManagerEvent event)
+                    public void selectionChanged(@NotNull FileEditorManagerEvent event)
                     {
                         Editor editor = event.getManager().getSelectedTextEditor();
                         if (editor == null)

@@ -3,7 +3,6 @@ package net.bitpot.injector.handlers.checkers;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.LogicalPosition;
-import com.intellij.openapi.project.Project;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,11 +43,5 @@ public class RubyInjectionChecker extends CustomChecker
         int tagCloseRightPos = posForward(docChars, tagClose, offset - tagClose.length() + 1);
 
         return tagCloseRightPos >= 0;
-    }
-
-
-    public static boolean isInjectionAllowed(Project project, Editor editor)
-    {
-        return !isCursorInInjectedCode(editor, editor.getCaretModel().getLogicalPosition());
     }
 }

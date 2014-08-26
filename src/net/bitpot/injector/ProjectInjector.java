@@ -50,8 +50,6 @@ public class ProjectInjector implements ProjectComponent, Disposable, CaretListe
     private Project project;
     private InjectorWidget widget;
 
-    private boolean injectionAllowedInFile = false;
-
     // Map will contain each editor state
     private Map<Editor, EditorState> editorsStates = new HashMap<Editor, EditorState>();
     private ProjectConfig settings = new ProjectConfig();
@@ -133,13 +131,6 @@ public class ProjectInjector implements ProjectComponent, Disposable, CaretListe
     }
 
 
-    public boolean isInjectionAllowedInFile()
-    {
-        return injectionAllowedInFile;
-    }
-
-
-
     private void showInjectorStatusBarWidget()
     {
         StatusBar bar = WindowManager.getInstance().getStatusBar(project);
@@ -192,13 +183,6 @@ public class ProjectInjector implements ProjectComponent, Disposable, CaretListe
     }
 
 
-    public int getEditorState(Editor editor)
-    {
-        EditorState edState = getEditorStateContainer(editor);
-        return edState.state;
-    }
-
-
     private EditorState getEditorStateContainer(Editor editor)
     {
         if (!editorsStates.containsKey(editor))
@@ -208,28 +192,10 @@ public class ProjectInjector implements ProjectComponent, Disposable, CaretListe
     }
 
 
-    public void onKeyTyped(Editor editor)
-    {
-        setEditorState(editor, STATE_NORMAL);
-    }
-
-
-    public void onCodeInjected(Editor editor)
-    {
-        setEditorState(editor, STATE_JUST_INJECTED);
-    }
-
-
     @Override
     public void dispose()
     {
         // Do nothing?
-    }
-
-
-    public Project getProject()
-    {
-        return project;
     }
 
 
@@ -258,8 +224,6 @@ public class ProjectInjector implements ProjectComponent, Disposable, CaretListe
         @Override
         public void selectionChanged(@NotNull FileEditorManagerEvent event)
         {
-            // Here we should check if injector can work with this type of file and cache this value until next tab change.
-            injectionAllowedInFile = Utils.isInjectionAllowedInFile(event.getNewFile());
             updateWidget();
         }
     }

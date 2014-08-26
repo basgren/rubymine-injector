@@ -26,18 +26,6 @@ public class InjectionList extends Vector<InjectionInfo> implements Assignable<I
     }
 
 
-    public String findTemplate(String typedSequence)
-    {
-        for(InjectionInfo info : this)
-        {
-            if (info.getShortcut().equals(typedSequence))
-                return info.getTemplate();
-        }
-
-        return null;
-    }
-
-
     @Override
     public void assign(InjectionList source)
     {
