@@ -4,11 +4,13 @@ import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
+import com.intellij.util.ui.JBUI;
 import net.bitpot.injector.Config;
 import net.bitpot.injector.ProjectInjector;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -29,7 +31,7 @@ public class InjectorWidget extends JPanel implements CustomStatusBarWidget//, S
 
     private JLabel myIconLabel;
 
-
+    private final static Border BORDER_INSTANCE = JBUI.Borders.empty(0, 2);
 
     public InjectorWidget(ProjectInjector projectComp)
     {
@@ -37,7 +39,7 @@ public class InjectorWidget extends JPanel implements CustomStatusBarWidget//, S
 
         setLayout(new BorderLayout(0, 0));
         setOpaque(false);
-        setBorder(new WidgetBorder());
+        setBorder(BORDER_INSTANCE);
 
         myIconLabel = new JLabel();
         Dimension dim = new Dimension(16,16);
@@ -46,9 +48,7 @@ public class InjectorWidget extends JPanel implements CustomStatusBarWidget//, S
         myIconLabel.setMinimumSize(dim);
         add(myIconLabel, BorderLayout.CENTER);
 
-
         updateIcon();
-
 
         myIconLabel.addMouseListener(new MouseAdapter()
         {

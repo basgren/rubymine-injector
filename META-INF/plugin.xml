@@ -12,14 +12,20 @@
     Templates can be added and/or changed in settings. See details in General Usage section.<br/>
     Feel free to report bugs and your suggestions to provided e-mail.
     ]]></description>
-  <version>1.02</version>
+  <version>1.03</version>
   <vendor email="bas.gren@gmail.com">Basil Gren</vendor>
   <category>Editor</category>
 
   <change-notes><![CDATA[
+        <p><b>1.03</b><br/>
+        <ul>
+          <li>Update plugin to work with RubyMine 8.0</li>
+        </ul>
+        </p>
+
         <p><b>1.02</b><br/>
         <ul>
-          <li>Fixed Injector exception throwed when typing characters in editors that are not linked to any project (for example, in Settings dialog).</li>
+          <li>Fixed Injector exception thrown when typing characters in editors that are not linked to any project (for example, in Settings dialog).</li>
         </ul>
         </p>
 
@@ -73,7 +79,7 @@
     ]]>
   </change-notes>
 
-  <idea-version since-build="8000"/>
+  <idea-version since-build="139"/>
 
   <!--<depends>com.intellij.modules.platform</depends>-->
   <depends>com.intellij.modules.ruby</depends>

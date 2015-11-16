@@ -211,6 +211,16 @@ public class ProjectInjector implements ProjectComponent, Disposable, CaretListe
         ApplicationInjector.getTypedKeyHandler().resetTypedSequence();
     }
 
+    @Override
+    public void caretAdded(CaretEvent caretEvent) {
+        // Do nothing
+    }
+
+    @Override
+    public void caretRemoved(CaretEvent caretEvent) {
+        // Do nothing
+    }
+
 
     /**
      * Provides some important actions on when file tab is changed in editor.
