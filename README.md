@@ -32,9 +32,9 @@ or press default shortcut Ctrl+Comma(,).
    It's highly recommended to use JDK 1.6 to make plugin compatible with wider
    range of systems.
 
-4. Set up IntelliJ plugin SDK. You should have RubyMine 6 installed.
+4. Set up IntelliJ plugin SDK. You should have RubyMine 8 installed.
    Go to File > Project Structure > SDKs > Add new IntelliJ IDEA Plugin SDK,
-   name it "RubyMine 6 SDK" and select path to your RubyMine 6 installation.
+   name it "RubyMine 8 SDK" and select path to your RubyMine 8 installation.
    When you are asked to select JDK, specify JDK from previous step.
 
 5. Select a project SDK for your project using "File > Project Structure >
