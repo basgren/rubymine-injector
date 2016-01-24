@@ -4,77 +4,30 @@
     Provides fast Ruby code injections into erb files and ruby strings. Injector makes replacements as fast as you
     type shortcut text and also provides additional features. Examples:
     <ul>
-        <li>'%%' --&gt; &lt;%- | -%&gt;</li>
-        <li>'%=' --&gt; &lt;%= | -%&gt;</li>
-        <li>'%-' --&gt; &lt;% | %&gt;</li>
-        <li>'##' --&gt; &lt;%# | -%&gt;</li>
+        <li>'%%' --&gt; &lt;% | %&gt;</li>
+        <li>'%=' --&gt; &lt;%= | %&gt;</li>
+        <li>'%-' --&gt; &lt;%- | -%&gt;</li>
+        <li>'##' --&gt; &lt;%# | %&gt;</li>
     </ul>
     Templates can be added and/or changed in settings. See details in General Usage section.<br/>
     Feel free to report bugs and your suggestions to provided e-mail.
     ]]></description>
-  <version>1.03</version>
+  <version>1.04</version>
   <vendor email="bas.gren@gmail.com">Basil Gren</vendor>
   <category>Editor</category>
 
   <change-notes><![CDATA[
-        <p><b>1.03</b><br/>
+        <p><b>1.04</b><br/>
         <ul>
-          <li>Update plugin to work with RubyMine 8.0</li>
+          <li>Fix saving plugin options when it's opened in IDE settings
+              (Settings > Tools > Injector)</li>
+          <li>Update default templates</li>
         </ul>
         </p>
 
-        <p><b>1.02</b><br/>
-        <ul>
-          <li>Fixed Injector exception thrown when typing characters in editors that are not linked to any project (for example, in Settings dialog).</li>
-        </ul>
-        </p>
-
-        <p><b>1.01</b><br/>
-        <ul>
-          <li>Fixed throwing exception by Injector when task is changed in Task Manager with switching current context</li>
-        </ul>
-        </p>
-
-        <p><b>1.0</b><br/>
-        <ul>
-          <li>Added Injector settings dialog, where you can specify own templates. The dialog accessible by right-click on Injector icon in status bar (opens very fast).</li>
-          <li>Added ignore shortcut option</li>
-          <li>Added ability to insert '#{}' into ruby strings, converting them to interpolated if necessary</li>
-          <li>Code optimization</li>
-          <li>Usage statistics added</li>
-        </ul>
-        </p>
-
-        <p><b>0.95b</b><br/>
-        <ul>
-          <li>Changed injection method. Now character sequence should be typed instead of one char to be replaced by template.
-              This makes Injector not so annoying in some situations as it was before.</li>
-          <li>Added some new templates.</li>
-        </ul>
-        </p>
-
-
-        <p><b>0.91</b><br/>
-        <ul>
-          <li>Fixed issue when Injector occasionally inserted ruby injections if replace key is hold.</li>
-          <li>Minor injection rules fix.</li>
-        </ul>
-        </p>
-
-        <p><b>0.9</b><br/>
-        <ul>
-          <li>Injector have become much more unobtrusive. It injects code only within html text and attributes value,
-              within &lt;script&gt; tag it's automatically disabled.</li>
-          <li>Performance improved.</li>
-          <li>Plugin state now persists between IDE restarts.</li>
-          <li>Minor bugs fixed.</li>
-        </ul>
-        </p>
-
-        <p><b>0.8</b><br/>
-        <ul>
-          <li>Initital release</li>
-        </ul>
+        <p>
+        Full list of changes can be found
+        <a href="https://github.com/basgren/rubymine-injector/blob/master/CHANGES.md">here</a>.
         </p>
     ]]>
   </change-notes>
@@ -126,7 +79,7 @@
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
-      <projectConfigurable groupId="tools"
+      <applicationConfigurable groupId="tools"
               displayName="Injector" id="injector"
               instance="net.bitpot.injector.InjectorOptionsConfigurable"/>
 
