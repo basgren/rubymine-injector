@@ -54,20 +54,19 @@ public class ApplicationConfig implements Assignable<ApplicationConfig>
     {
         if (injections.isEmpty())
         {
-            injections.addInjection("%%", "<%- | -%>");
-            injections.addInjection("%=", "<%= | -%>");
-            injections.addInjection("%-", "<% | %>");
-            injections.addInjection("##", "<%# | -%>");
-            injections.addInjection("%i", "<%- if | -%>");
-            injections.addInjection("%u", "<%- unless | -%>");
-            injections.addInjection("%l", "<%- else -%>");
-            injections.addInjection("%e", "<%- end -%>");
-            injections.addInjection("%f", "<%- for | -%>");
-            injections.addInjection("%t", "<%= t('|') -%>");
+            injections.addInjection("%%", "<% | %>");
+            injections.addInjection("%=", "<%= | %>");
+            injections.addInjection("%-", "<%- | -%>");
+            injections.addInjection("##", "<%# | %>");
+            injections.addInjection("%i", "<% if | %>");
+            injections.addInjection("%u", "<% unless | %>");
+            injections.addInjection("%l", "<% else %>");
+            injections.addInjection("%e", "<% end %>");
+            injections.addInjection("%f", "<% for | %>");
+            injections.addInjection("%t", "<%= t('|') %>");
             injections.addInjection("%a", "<%= asset_path('|') %>");
-            injections.addInjection("%d", "<%# TODO: | -%>");
+            injections.addInjection("%d", "<%# TODO: | %>");
         }
-
 
         stringInjection.setShortcut("##");
         stringInjection.setTemplate("#{|}");
