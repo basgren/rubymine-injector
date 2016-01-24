@@ -5,10 +5,10 @@ Injector is a simple plugin for RubyMine that provides fast ruby code
 injections into erb templates. The plugin expands templates as fast as you
 type shortcut text:
 
-    '%%' --> <%- | -%>
-    '%=' --> <%= | -%>
-    '%-' --> <% | %>
-    '##' --> <%# | -%>
+    '%%' --> <% | %>
+    '%=' --> <%= | %>
+    '%-' --> <%- | -%>
+    '##' --> <%# | %>
 
 Templates are not inserted if cursor is already in Ruby-code block. You can
 change existing templates of define your own templates in settings dialog which
