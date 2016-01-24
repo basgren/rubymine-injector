@@ -126,6 +126,11 @@
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
+      <projectConfigurable groupId="tools"
+              displayName="Injector" id="injector"
+              instance="net.bitpot.injector.InjectorOptionsConfigurable"/>
+
+      <applicationService
+              serviceImplementation="net.bitpot.injector.InjectorOptionsProvider"/>
   </extensions>
 </idea-plugin>

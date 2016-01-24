@@ -7,6 +7,7 @@ import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import net.bitpot.injector.ApplicationInjector;
+import net.bitpot.injector.InjectorOptionsConfigurable;
 import net.bitpot.injector.gui.SettingsDialog;
 
 /**
@@ -56,6 +57,6 @@ class SettingsAction extends AnAction
 
         // Displaying settings can be done through ShowSettingsUtil instance.
         ShowSettingsUtil settingsUtil = ShowSettingsUtil.getInstance();
-        settingsUtil.showSettingsDialog(project, ApplicationInjector.getInstance());
+        settingsUtil.showSettingsDialog(project, InjectorOptionsConfigurable.class);
     }
 }
