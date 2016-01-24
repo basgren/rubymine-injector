@@ -20,8 +20,6 @@ import java.awt.event.MouseEvent;
  */
 public class SettingsDialog extends DialogWrapper
 {
-
-
     private JTable templatesTbl;
     private JButton addTemplateBtn;
     private JButton deleteTemplateBtn;
@@ -51,8 +49,6 @@ public class SettingsDialog extends DialogWrapper
     {
         super(true);
         setTitle("Injector Settings");
-
-
 
         init();
 
@@ -162,8 +158,6 @@ public class SettingsDialog extends DialogWrapper
     }
 
 
-
-
     private void editCurrentSelection()
     {
         int modelRow = templatesTbl.convertRowIndexToModel(templatesTbl.getSelectedRow());
@@ -192,7 +186,6 @@ public class SettingsDialog extends DialogWrapper
     }
 
 
-
     public void setData(ApplicationConfig config)
     {
         // Use config copy to edit settings.
@@ -216,7 +209,6 @@ public class SettingsDialog extends DialogWrapper
         showStatsChk.setSelected(configCopy.isStatsVisible());
 
         updateStatsVisibility();
-
 
         resetModified();
     }
@@ -243,11 +235,7 @@ public class SettingsDialog extends DialogWrapper
     @SuppressWarnings("unused")
     public boolean isModified()
     {
-        if (modified)
-            return true;
-
-        // Other more simple modified flag checks go here.
-        return false;
+        return modified;
     }
 
     /**
@@ -264,8 +252,6 @@ public class SettingsDialog extends DialogWrapper
     {
         return rootComponent;
     }
-
-
 
 
     private class InjectionListTableModel extends AbstractTableModel

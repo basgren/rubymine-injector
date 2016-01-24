@@ -20,7 +20,6 @@ public class EditInjectionDialog extends DialogWrapper
     private JTextField templateEd;
 
 
-
     protected EditInjectionDialog(InjectionInfo info, Component parent)
     {
         this(info, parent, "Edit template");
@@ -37,7 +36,7 @@ public class EditInjectionDialog extends DialogWrapper
 
 
         init();
-        initData();
+        initControls();
         shortcutEd.requestFocus();
     }
 
@@ -65,7 +64,7 @@ public class EditInjectionDialog extends DialogWrapper
     }
 
 
-    private void initData()
+    private void initControls()
     {
         shortcutEd.setText(injection.getShortcut());
         templateEd.setText(injection.getTemplate());
@@ -92,10 +91,10 @@ public class EditInjectionDialog extends DialogWrapper
     @Override
     protected void doOKAction()
     {
+        applyData();
+
         modified = !(injection.getShortcut().equals(injectionCopy.getShortcut()) &&
                      injection.getTemplate().equals(injectionCopy.getTemplate()));
-
-        applyData();
 
         // Call inherited handler at the end as it will invoke dispose method.
         super.doOKAction();
