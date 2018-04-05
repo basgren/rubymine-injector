@@ -12,11 +12,17 @@
     Templates can be added and/or changed in settings. See details in General Usage section.<br/>
     Feel free to report bugs and your suggestions to provided e-mail.
     ]]></description>
-  <version>1.04</version>
+  <version>1.05</version>
   <vendor email="bas.gren@gmail.com">Basil Gren</vendor>
   <category>Editor</category>
 
   <change-notes><![CDATA[
+        <p><b>1.05</b><br/>
+        <ul>
+          <li>Added tooltip to Injector icon in status bar</li>
+        </ul>
+        </p>
+
         <p><b>1.04</b><br/>
         <ul>
           <li>Fix saving plugin options when it's opened in IDE settings
@@ -32,7 +38,7 @@
     ]]>
   </change-notes>
 
-  <idea-version since-build="139"/>
+  <idea-version since-build="181"/>
 
   <!--<depends>com.intellij.modules.platform</depends>-->
   <depends>com.intellij.modules.ruby</depends>
