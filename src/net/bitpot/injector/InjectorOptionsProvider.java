@@ -4,6 +4,7 @@ import com.intellij.openapi.components.*;
 import com.intellij.util.xmlb.XmlSerializer;
 import net.bitpot.injector.config.ApplicationConfig;
 import org.jdom.Element;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @State(
@@ -44,7 +45,7 @@ public class InjectorOptionsProvider implements PersistentStateComponent<Element
      * @see com.intellij.util.xmlb.XmlSerializerUtil#copyBean(Object, Object)
      */
     @Override
-    public void loadState(Element elem)
+    public void loadState(@NotNull Element elem)
     {
         appConfig.loadFromXml(elem);
     }

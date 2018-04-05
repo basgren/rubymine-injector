@@ -3,7 +3,6 @@ package net.bitpot.injector;
 import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
-import java.util.HashMap;
 
 /**
  * Contains all important settings for injector plugin.

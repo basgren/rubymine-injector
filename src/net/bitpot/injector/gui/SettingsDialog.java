@@ -1,6 +1,5 @@
 package net.bitpot.injector.gui;
 
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import net.bitpot.injector.ApplicationInjector;
@@ -10,8 +9,6 @@ import net.bitpot.injector.config.InjectionList;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -79,25 +76,11 @@ public class SettingsDialog extends DialogWrapper
             }
         });
 
-        addTemplateBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { addNewTemplate(); }
-        });
-
-        copyTemplateBtn.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) { copyCurrentSelection(); }
-        });
-
-        editTemplateBtn.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) { editCurrentSelection(); }
-        });
-
-        deleteTemplateBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { deleteCurrentSelection(); }
-        });
-
-        showStatsChk.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { updateStatsVisibility(); }
-        });
+        addTemplateBtn.addActionListener(e -> addNewTemplate());
+        copyTemplateBtn.addActionListener(e -> copyCurrentSelection());
+        editTemplateBtn.addActionListener(e -> editCurrentSelection());
+        deleteTemplateBtn.addActionListener(e -> deleteCurrentSelection());
+        showStatsChk.addActionListener(e -> updateStatsVisibility());
     }
 
     private void updateStatsVisibility()
@@ -256,7 +239,7 @@ public class SettingsDialog extends DialogWrapper
 
     private class InjectionListTableModel extends AbstractTableModel
     {
-        private InjectionList data = null;
+        private InjectionList data;
         private boolean showStats = false;
 
         public InjectionListTableModel(InjectionList injections)
@@ -337,16 +320,13 @@ public class SettingsDialog extends DialogWrapper
     {
         final ApplicationInjector injector = new ApplicationInjector();
 
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run()
-            {
-                SettingsDialog dialog = new SettingsDialog(injector.getConfig());
+        SwingUtilities.invokeLater(() -> {
+            SettingsDialog dialog = new SettingsDialog(injector.getConfig());
 
-                //dialog.setVisible(true);
-                dialog.show();
+            //dialog.setVisible(true);
+            dialog.show();
 
-                System.exit(0);
-            }
+            System.exit(0);
         });
     }
 }

@@ -201,7 +201,7 @@ public class InjectionInfo implements Assignable<InjectionInfo>, IXMLSerializabl
     {
         String shortcut = elem.getAttributeValue("shortcut");
         String template = elem.getText();
-        if (shortcut.trim().isEmpty() || template.trim().isEmpty())
+        if (shortcut == null || shortcut.trim().isEmpty() || template.trim().isEmpty())
             return false;
 
         setShortcut(shortcut);

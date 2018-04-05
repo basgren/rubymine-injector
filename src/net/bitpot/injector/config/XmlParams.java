@@ -62,7 +62,7 @@ public class XmlParams
         if (paramsHash != null)
             return;
 
-        paramsHash = new HashMap<String, String>();
+        paramsHash = new HashMap<>();
         List list = parent.getChildren("param");
 
         for(Object obj: list)

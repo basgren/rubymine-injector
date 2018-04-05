@@ -6,12 +6,11 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.EditorActionManager;
 import com.intellij.openapi.editor.actionSystem.TypedAction;
 import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
-import com.intellij.openapi.fileEditor.FileEditorManagerAdapter;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
-import com.intellij.openapi.project.ProjectManagerAdapter;
+import com.intellij.openapi.project.VetoableProjectManagerListener;
 import com.intellij.openapi.vfs.VirtualFile;
 import net.bitpot.injector.ApplicationInjector;
 import net.bitpot.injector.ProjectInjector;
@@ -30,7 +29,6 @@ public class TypedKeyHook implements TypedActionHandler
 {
     @SuppressWarnings("unused")
     private static Logger log = Logger.getInstance(TypedKeyHook.class.getName());
-    //private static Logger log = Logger.getInstance(TypedKeyHook.class.getName());
 
     // ------------ NEW IMPLEMENTATION --------------
 
@@ -43,15 +41,14 @@ public class TypedKeyHook implements TypedActionHandler
     private static TypedActionHandler originalHandler = null;
 
 
-    private Vector<AbstractTypingHandler> registeredHandlers = new Vector<AbstractTypingHandler>();
+    private Vector<AbstractTypingHandler> registeredHandlers = new Vector<>();
     private volatile int sequenceResetLock = 0;
 
-    ApplicationConfig config;
+    private ApplicationConfig config;
 
 
     // Will contain enabled handlers for every project.
-    private Map<Project, Vector<AbstractTypingHandler>> enabledTypingHandlers =
-            new HashMap<Project, Vector<AbstractTypingHandler>>();
+    private Map<Project, Vector<AbstractTypingHandler>> enabledTypingHandlers = new HashMap<>();
 
 
     /**
@@ -62,13 +59,23 @@ public class TypedKeyHook implements TypedActionHandler
         config = ApplicationInjector.getInstance().getConfig();
 
         // Register ProjectManagerListener to update enabledTypingHandlers upon project open/close.
-        ProjectManager.getInstance().addProjectManagerListener(new ProjectManagerAdapter()
-        {
-            @Override
-            public void projectOpened(Project project) { addEnabledHandlersList(project); }
-            @Override
-            public void projectClosed(Project project) { removeEnabledHandlersList(project); }
-        });
+        ProjectManager.getInstance()
+                .addProjectManagerListener(new VetoableProjectManagerListener() {
+                    @Override
+                    public boolean canClose(@NotNull Project project) {
+                        return true;
+                    }
+
+                    @Override
+                    public void projectOpened(Project project) {
+                        addEnabledHandlersList(project);
+                    }
+
+                    @Override
+                    public void projectClosed(Project project) {
+                        removeEnabledHandlersList(project);
+                    }
+                });
     }
 
 
@@ -83,10 +90,9 @@ public class TypedKeyHook implements TypedActionHandler
 
     private void addEnabledHandlersList(Project project)
     {
-        enabledTypingHandlers.put(project, new Vector<AbstractTypingHandler>());
+        enabledTypingHandlers.put(project, new Vector<>());
         project.getMessageBus().connect().subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER,
-                new FileEditorManagerAdapter()
-                {
+                new FileEditorManagerListener() {
                     @Override
                     public void selectionChanged(@NotNull FileEditorManagerEvent event)
                     {

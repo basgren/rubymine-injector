@@ -1,6 +1,7 @@
 package net.bitpot.injector.config;
 
 import com.intellij.openapi.diagnostic.Logger;
+import org.jdom.Attribute;
 import org.jdom.DataConversionException;
 import org.jdom.Element;
 
@@ -88,7 +89,11 @@ public class ApplicationConfig implements Assignable<ApplicationConfig>
     {
         int version;
         try {
-            version = elem.getAttribute("version").getIntValue();
+            Attribute attr = elem.getAttribute("version");
+            if (attr == null)
+                return;
+
+            version = attr.getIntValue();
         } catch (DataConversionException e) { return; }
 
         switch (version)

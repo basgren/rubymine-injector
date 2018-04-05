@@ -9,7 +9,6 @@ import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.editor.event.CaretEvent;
 import com.intellij.openapi.editor.event.CaretListener;
 import com.intellij.openapi.editor.event.EditorEventMulticaster;
-import com.intellij.openapi.fileEditor.FileEditorManagerAdapter;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.Project;
@@ -46,7 +45,7 @@ public class ProjectInjector implements ProjectComponent, Disposable, CaretListe
     private InjectorWidget widget;
 
     // Map will contain each editor state
-    private Map<Editor, EditorState> editorsStates = new HashMap<Editor, EditorState>();
+    private Map<Editor, EditorState> editorsStates = new HashMap<>();
     private ProjectConfig settings = new ProjectConfig();
 
 
@@ -159,7 +158,7 @@ public class ProjectInjector implements ProjectComponent, Disposable, CaretListe
 
 
     @Override
-    public void loadState(ProjectConfig state)
+    public void loadState(@NotNull ProjectConfig state)
     {
         settings = state;
         updateWidget();
@@ -220,7 +219,7 @@ public class ProjectInjector implements ProjectComponent, Disposable, CaretListe
     /**
      * Provides some important actions on when file tab is changed in editor.
      */
-    private class InjectorFileEditorManagerListener extends FileEditorManagerAdapter
+    private class InjectorFileEditorManagerListener implements FileEditorManagerListener
     {
         /**
          * This event occurs when editor tab is changed.

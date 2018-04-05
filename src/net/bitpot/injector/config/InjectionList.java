@@ -10,11 +10,10 @@ public class InjectionList extends Vector<InjectionInfo> implements Assignable<I
     private int totalShortcutUsageCount = 0;
     private int totalKeypressesSavedCount = 0;
 
-    public InjectionInfo addInjection(String shortcut, String template)
+    void addInjection(String shortcut, String template)
     {
         InjectionInfo info = new InjectionInfo(shortcut, template, this);
         add(info);
-        return info;
     }
 
 

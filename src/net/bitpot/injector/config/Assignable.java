@@ -11,5 +11,5 @@ public interface Assignable<T>
      * Method should assign necessary structure  from source object.
      * @param source Source object which properties should be copied.
      */
-    public void assign(T source);
+    void assign(T source);
 }
