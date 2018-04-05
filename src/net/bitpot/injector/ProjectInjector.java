@@ -3,10 +3,7 @@ package net.bitpot.injector;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ProjectComponent;
-import com.intellij.openapi.components.State;
-import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.components.*;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.editor.event.CaretEvent;
@@ -30,12 +27,10 @@ import java.util.Map;
  * Project component. It will show icon in status bar correctly for any number of open project windows.
  */
 @State(
-  name="ProjectConfig",
-  storages= {
-    @Storage(
-      id="other",
-      file = "$WORKSPACE_FILE$"
-    )}
+    name = "ProjectConfig",
+    storages = {
+            @Storage(StoragePathMacros.WORKSPACE_FILE)
+    }
 )
 
 public class ProjectInjector implements ProjectComponent, Disposable, CaretListener,

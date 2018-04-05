@@ -1,9 +1,6 @@
 package net.bitpot.injector;
 
-import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.components.State;
-import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.components.*;
 import com.intellij.util.xmlb.XmlSerializer;
 import net.bitpot.injector.config.ApplicationConfig;
 import org.jdom.Element;
@@ -12,10 +9,8 @@ import org.jetbrains.annotations.Nullable;
 @State(
     name="InjectorSettings",
     storages= {
-        @Storage(
-            id="other",
-            file = "$APP_CONFIG$/injector.xml"
-        )}
+            @Storage("$APP_CONFIG$/injector.xml")
+    }
 )
 public class InjectorOptionsProvider implements PersistentStateComponent<Element> {
 
