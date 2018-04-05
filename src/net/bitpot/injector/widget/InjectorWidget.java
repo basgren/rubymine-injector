@@ -136,14 +136,19 @@ public class InjectorWidget extends JPanel implements CustomStatusBarWidget//, S
             return;
 
         Icon icon;
+        String hint;
 
-        if (projectInjector.isEnabled())
+        if (projectInjector.isEnabled()) {
             //icon = projectInjector.isInjectionAllowedInFile() ? Config.INJECTOR_TAG_ICON : Config.INJECTOR_ICON;
             icon = Config.INJECTOR_ICON;
-        else
+            hint = "Injector plugin is enabled. Click to disable";
+        } else {
             icon = Config.INJECTOR_OFF_ICON;
+            hint = "Injector plugin is disabled. Click to enable";
+        }
 
         myIconLabel.setIcon(icon);
+        myIconLabel.setToolTipText(hint);
     }
 
 
